@@ -1,0 +1,21 @@
+import re
+
+filein = open(r'D:\Personal_Study\Work_By_Myself\test_read_Rx_Abnomral_9.txt','rb')
+#p = r'((20 20 20 20 20)+\r\n70)'#\n70 6B 74 73
+#p = r'(20 20 20 20 20 \r\n70 6B 74 73){1}[0-9A-Z\40\r\n]?#'
+p = r'(70 6B 74 73){1}[0-9A-Z\40\r\n]?#'
+p = re.compile(p)
+data = filein.read()
+pkt_start = p.finditer(data)
+print pkt_start
+for i  in pkt_start:
+    print i.group()
+    print i.span()
+
+
+filein.close()
+#fileout.close()
+#fileout = open(r'D:\Personal_Study\Work_By_Myself\test_read_Rx_Abnomral.txt','w+')
+#for eachLine in filein:
+    #print eachLine,
+    #fileout.write(eachLine)
